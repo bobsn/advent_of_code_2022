@@ -352,7 +352,23 @@ def follow_instructions_2(crates: list, instruct_list: list):
 # Day 6
 #############################################
 
+def find_marker(text: list, distinct_characters: int = 4):
+    """Checks for each sequence if it exists of only distinct characters.
 
+    Args:
+        text (list): List containing the input of the day.
+        distinct_characters (int, optional): Value that states how long the sequence should be. Defaults to 4.
+    """    
+    line = text[0]
+    sequence_of_characters = line[:distinct_characters]
+    for idx, letter in enumerate(line[distinct_characters:]):
+        sequence_of_characters = sequence_of_characters[1:] + letter
+        duplicates = [sequence_of_characters.count(part) for part in sequence_of_characters]
+        if sum(duplicates) == distinct_characters:
+            print(f"The sequence is: {sequence_of_characters}, the new letter is: {letter}")
+            break
+
+    print(f"The amount of characters is {idx+distinct_characters+1}")  
 
 
 #############################################
