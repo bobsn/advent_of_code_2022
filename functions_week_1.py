@@ -300,12 +300,9 @@ def get_instructions(instructions: list)-> list:
     """    
     instruct_list = []
     for instruction in instructions:
-        temp_list = []
         word_list = instruction.split()
-        for word in word_list:
-            if word.isnumeric():
-                temp_list.append(int(word))
-        instruct_list.append(temp_list)
+        list_of_instruction_numbers = [int(word) for word in word_list if word.isnumeric()]
+        instruct_list.append(list_of_instruction_numbers)
     return instruct_list    
 
 def follow_instructions_1(crates: list, instruct_list: list):
